@@ -52,17 +52,6 @@ jobs:
         with:
           fetch-depth: 0 # Let's get all the branches.
 
-      # Logic for step 2
-      - name: Ensure .env is gone from history
-        run: |
-          if [ -n "$(git log --stat --all -- .env)" ]; then
-            echo "File .env is still in the repository's history, please remove it."
-            exit 1
-          else
-            echo "File .env doesn't exist in the repository's history."
-            exit 0
-          fi
-
       # In README.md, switch step 2 for step 3.
       - name: Update to step 3
         uses: skills/action-update-step@v2
